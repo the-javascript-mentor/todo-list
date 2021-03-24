@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const AddTodo = ({ text, setText, onClick }) => {
   return (
@@ -14,6 +15,13 @@ const AddTodo = ({ text, setText, onClick }) => {
     </div>
   );
 };
+
+AddTodo.propTypes = {
+  text: PropTypes.string,
+  setText: PropTypes.func,
+  onClick: PropTypes.func,
+};
+
 const App = () => {
   const [newTodoText, setNewTodoText] = useState("");
   const [todoItems, setTodoItems] = useState([]);
