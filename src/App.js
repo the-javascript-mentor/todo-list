@@ -1,5 +1,19 @@
 import { useState } from "react";
 
+const AddTodo = ({ text, setText, onClick }) => {
+  return (
+    <div>
+      <input
+        type="text"
+        value={text}
+        onChange={(event) => {
+          setText(event.target.value);
+        }}
+      />
+      <button onClick={onClick}>Add todo</button>
+    </div>
+  );
+};
 const App = () => {
   const [newTodoText, setNewTodoText] = useState("");
   const [todoItems, setTodoItems] = useState([]);
@@ -58,14 +72,11 @@ const App = () => {
   return (
     <div>
       <h1>To-do app</h1>
-      <input
-        type="text"
-        value={newTodoText}
-        onChange={(event) => {
-          setNewTodoText(event.target.value);
-        }}
+      <AddTodo
+        text={newTodoText}
+        setText={setNewTodoText}
+        onClick={addButtonClickHandler}
       />
-      <button onClick={addButtonClickHandler}>Add todo</button>
       {todoItems.length === 0 && <p>No items</p>}
       <ul>
         {todoItems.map((item) => (
